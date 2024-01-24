@@ -79,11 +79,7 @@ JOIN orders o ON o.salesman_id = s.salesman_id
 JOIN customer c ON s.salesman_id = c.salesman_id;
 
 --14. Write a SQL statement to make a list for the salesmen who either work for one or more customers or yet to join any of the customers. The customer may have placed, either one or more orders on or above order amount 2000 and must have a grade, or he may not have placed any order to the associated supplier. 
-SELECT s.name AS Salesperson, c.cust_name, s.city, c.grade, o.ord_no, o.ord_date, o.purch_amt
-FROM salesman s
-LEFT OUTER JOIN orders o ON o.salesman_id = s.salesman_id
-LEFT OUTER JOIN customer c ON s.salesman_id = c.salesman_id
-WHERE o.purch_amt>=2000 AND c.grade IS NOT NULL;
+SELECT DISTINCT s.salesman_id, s.name AS salesmanFROM salesman sLEFT JOIN customer c ON s.salesman_id = c.salesman_idLEFT JOIN orders o ON c.customer_id = o.customer_idWHERE c.customer_id IS NOT NULL OR o.purch_amt >= 2000 OR o.purch_amt IS NULL;
 
 --15. Write a SQL statement to generate a list of all the salesmen who either work for one or more customers or have yet to join any of them. The customer may have placed one or more orders at or above order amount 2000, and must have a grade, or he may not have placed any orders to the associated supplier. 
 SELECT s.name AS Salesperson, c.cust_name, s.city, c.grade, o.ord_no, o.ord_date, o.purch_amt
