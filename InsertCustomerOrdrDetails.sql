@@ -5,7 +5,7 @@ CREATE PROCEDURE InsertCustomerOrderDetails
 	@orderID int,
 	@productID int,
 	@unitPrice money,
-	@quantity int,
+	@quantity smallint,
 	@discount real
 AS
 BEGIN
