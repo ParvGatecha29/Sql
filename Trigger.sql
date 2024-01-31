@@ -1,7 +1,7 @@
 
 CREATE TRIGGER CheckFreightLimit
 ON Ordersn
-FOR INSERT, UPDATE
+AFTER UPDATE, INSERT
 AS
 BEGIN
     DECLARE @AverageFreight money
